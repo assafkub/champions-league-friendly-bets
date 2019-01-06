@@ -1,5 +1,6 @@
 <div align="center">Based on </div>
     <a href="https://github.com/react-boilerplate/react-boilerplate">
+  react-boilerplate
       </a>
 <br />
 
