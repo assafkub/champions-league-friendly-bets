@@ -1,0 +1,15 @@
+const constCLAPI = {
+
+  apiBaseUrl: ()=>{return 'http://api.football-data.org/v2/';},
+
+  standings: ()=>{
+    return constCLAPI.apiBaseUrl() + 'competitions/2001/standings';
+  },
+
+  APIKey: ()=>{
+    return 'e8c9511f17524eddbee7d1be562f9f36';
+  }
+};
+
+
+module.exports = constCLAPI;

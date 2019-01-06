@@ -2,10 +2,12 @@
 
 const express = require('express');
 const logger = require('./logger');
-
+const Mongoose = require('mongoose');
 const argv = require('./argv');
 const port = require('./port');
 const setup = require('./middlewares/frontendMiddleware');
+const updateDB = require('./config/updateDB');
+const database = require('./config/database');
 const isDev = process.env.NODE_ENV !== 'production';
 const ngrok =
   (isDev && process.env.ENABLE_TUNNEL) || argv.tunnel
@@ -35,6 +37,20 @@ app.get('*.js', (req, res, next) => {
   next();
 });
 
+Mongoose.connect(database.database);
+let db = Mongoose.connection;
+
+// Check MongoDB connection
+db.once('open', () => {
+  console.log("MongoDB connected");
+  updateDB.dbPulling(db)
+});
+
+// Check MongoDB error
+db.on('error', (e) => {
+  console.log(e);
+});
+
 // Start your app.
 app.listen(port, host, async err => {
   if (err) {
@@ -53,4 +69,8 @@ app.listen(port, host, async err => {
   } else {
     logger.appStarted(port, prettyHost);
   }
+
+
+
 });
+

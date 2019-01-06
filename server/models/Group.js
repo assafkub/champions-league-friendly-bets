@@ -6,16 +6,9 @@ let teamSchema = Mongoose.Schema({
     type: String,
     require: true
   },
-  group:{
-    type: String,
-    require: true
-  },
-  _id: {
-    type: Number,
-    require: true
-  },
-  crestUrl: {
-    type: String,
+
+  table: {
+    type: [],
     require: true
   },
 

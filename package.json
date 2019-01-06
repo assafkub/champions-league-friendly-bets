@@ -1,5 +1,5 @@
 {
-  "name": "react-boilerplate",
+  "name": "champions-league",
   "version": "3.7.0",
   "description": "A highly scalable, offline-first foundation with the best DX and a focus on performance and best practices",
   "repository": {
@@ -22,7 +22,7 @@
     "prebuild": "npm run build:clean",
     "build": "cross-env NODE_ENV=production webpack --config internals/webpack/webpack.prod.babel.js --color -p --progress --hide-modules --display-optimization-bailout",
     "build:clean": "rimraf ./build",
-    "start": "cross-env NODE_ENV=development node server",
+    "start": "cross-env NODE_ENV=development node --inspect=49663 --inspect-brk server",
     "start:tunnel": "cross-env NODE_ENV=development ENABLE_TUNNEL=true node server",
     "start:production": "npm run test && npm run build && npm run start:prod",
     "start:prod": "cross-env NODE_ENV=production node server",
@@ -85,6 +85,7 @@
     "redux": "4.0.1",
     "redux-immutable": "4.0.0",
     "redux-saga": "0.16.2",
+    "request": "^2.88.0",
     "reselect": "4.0.0",
     "sanitize.css": "4.1.0",
     "styled-components": "4.0.2",
